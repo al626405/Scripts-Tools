@@ -1,0 +1,616 @@
+												########################################################
+												#													   #
+												#		       USEFUL LINUX BASH COMMANDS			   #
+												#			  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~			   #
+												#					 Version 0.0.1 					   #				
+												#													   #
+												#		 ~~~~~~~~~~~~~~~~~~~~~~~~~					   #
+												#		 | HOST USED FOR EXAMPLES:  * ralice.xyz *     #
+												#		 ~~~~~~~~~~~~~~~~~~~~~~~~~	~~~~~~~~~~~~~~	   #
+												#													   #	
+												#				  By: Alexis Leclerc				   #
+												#				  Created: 07/23/2024				   #
+												#				  Updated: 07/23/2024				   #
+												#			DWistled Knows The Current Chapter		   #
+												########################################################
+
+SSH: Use Putty SSH Client [Port 22]
+User: Alexis
+Pass: Toor5access
+host used for examples										                                               
+
+
+#1 pt r
+. X  X 
+. X  X 
+. .  X 
+. .  X 
+. .  X 
+. .  . 
+       
+#1apter
+
+=======================================================================================================================================================================
+|																Bash Terminal Commands																				  |
+=======================================================================================================================================================================	
+
+
+												  ####################################################
+												  #			    File & Filepath Commands   			 #
+												  ####################################################		
+
+																	|
+	------------------------------------------						|							------------------------------------------							
+	| Show The Current Directory: 			 |						|							| Clear Terminal Screen:				 |
+	------------------------------------------						|							------------------------------------------
+																	|							
+		ls															|								clear	
+																	|
+																	|																	
+	------------------------------------------						|							--------------------------------------------------							
+	| Home or root Directory:     			 |						|							| Create A New File & Save W/ Any Extension:	 |
+	------------------------------------------						|							--------------------------------------------------
+																	|
+		cd															|							To Create the File/Script:
+																	|							~~~~~~~~~~~~~~~~~~~~~~~~~~
+			OR,														|																
+																	|									nano CreateDB&Tables.sql
+		cd ~/	'~' Represents The Current user's home Directory.	|										
+																	|									<Write Or Copy+Paste Script>
+																	|						
+	------------------------------------------						|							To Save the File/Script:
+	| Change Directory:						 |						|							~~~~~~~~~~~~~~~~~~~~~~~~
+	------------------------------------------						|
+																	|								Ctrl-x   -->   hit 'y' on your keyboard   -->  hit 'ENTER' on your keyboard
+	Subdirectory of home/: 		cd ~/subdirectory/					|
+	~~~~~~~~~~~~~~~~~~~~~											|
+																	|							------------------------------------------
+																	|							| Resource Monitor In Bash Terminal:	 |						
+		  Any Directory /: 		cd /path/to/folder/file.csv			|							------------------------------------------
+		  ~~~~~~~~~~~~~~~											|
+																	|							Less Resource Intensive:	top
+				  Example:		cd /usr/lib or cd /home/Alexis		|							~~~~~~~~~~~~~~~~~~~~~~~~
+				  ~~~~~~~											|									
+																	|				 More Detailed & Resource Intensive:	htop
+																	|				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+	------------------------------------------						|
+	| Create A New Folder (Directory):		 |						|		
+	------------------------------------------						|							------------------------------------------
+																	|							| :			 							 |						
+		mkdir <folder_name>											|							------------------------------------------																				
+																	|							
+																	|							
+																	|							
+																	|
+																	|
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+														  **********NEED TO EDIT**********
+												  ####################################################
+												  #			    File & Folder Permissions  			 #
+												  ####################################################			
+
+																	|
+	------------------------------------------						|							------------------------------------------							
+	| Show The Current Directory: 			 |						|							| Clear Terminal Screen:				 |
+	------------------------------------------						|							------------------------------------------
+																	|							
+		ls															|								clear	
+																	|
+																	|																	
+	------------------------------------------						|							--------------------------------------------------							
+	| Home or root Directory:     			 |						|							| Create A New File & Save W/ Any Extension:	 |
+	------------------------------------------						|							--------------------------------------------------
+																	|
+		cd															|							To Create the File/Script:
+																	|							~~~~~~~~~~~~~~~~~~~~~~~~~~
+			OR,														|																
+																	|									nano CreateDB&Tables.sql
+		cd ~/	'~' Represents The Current user's home Directory.	|										
+																	|									<Write Or Copy+Paste Script>
+																	|						
+	------------------------------------------						|							To Save the File/Script:
+	| Change Directory:						 |						|							~~~~~~~~~~~~~~~~~~~~~~~~
+	------------------------------------------						|
+																	|								Ctrl-x   -->   hit 'y' on your keyboard   -->  hit 'ENTER' on your keyboard
+	Subdirectory of home/: 		cd ~/subdirectory/					|
+	~~~~~~~~~~~~~~~~~~~~~											|
+																	|							------------------------------------------
+																	|							| Resource Monitor In Bash Terminal:	 |						
+		  Any Directory /: 		cd /path/to/folder/file.csv			|							------------------------------------------
+		  ~~~~~~~~~~~~~~~											|
+																	|							Less Resource Intensive:	top
+				  Example:		cd /usr/lib or cd /home/Alexis		|							~~~~~~~~~~~~~~~~~~~~~~~~
+				  ~~~~~~~											|									
+																	|				 More Detailed & Resource Intensive:	htop
+																	|				~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+	------------------------------------------						|
+	| Create A New Folder (Directory):		 |						|		
+	------------------------------------------						|							------------------------------------------
+																	|							| :			 							 |						
+		mkdir <folder_name>											|							------------------------------------------																				
+																	|							
+																	|							
+																	|							
+																	|
+																	|
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+=======================================================================================================================================================================
+|																Running Tasks/Processes																				  |
+=======================================================================================================================================================================	
+
+										
+												  ####################################################
+												  #					  I/O Priority				     #
+												  ####################################################										
+---------------------------------------
+| Set I/O Priority for a New Process: |
+---------------------------------------
+
+ionice -c <class> -n <priority> command
+
+-----------------------------------------------
+| Change I/O Priority of an Existing Process: |
+-----------------------------------------------
+
+ionice -c <class> -n <priority> -p <PID>
+
+ionice -c 2 -n 0 -p
+
+---------------------------------------------------------------------------------------------------------------																										  
+| <class>: The I/O scheduling class. Options are:															  |
+| I)   1 for real-time																						  |
+| II)  2 for best-effort ***USE																				  |
+| III) 3 for idle																							  |
+|																											  |
+| <priority>: The priority level. For classes 2 and 3, the priority ranges from 0 (highest) to 7 (lowest).	  |
+---------------------------------------------------------------------------------------------------------------
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+
+												  ####################################################
+												  #					  CPU Priority				     #
+												  ####################################################
+												  
+---------------------------------------------------
+| Start a New Process with a Specific Nice Level: |
+---------------------------------------------------
+
+nice -n <nice_value> command
+
+---------------------------------------------------
+| Change the Nice Level of an Existing Process:   |
+---------------------------------------------------
+
+renice -n <nice_value> -p <PID>
+
+renice -n -20 -p 
+
+renice -n -20 -g <PGRP>
+
+renice -n -20 -g 
+
+---------------------------------------------------------------------------------------------------------------																										  
+| <nice_value>: The CPU Priority . Options are:															  	  |
+| I)   -20 for Highest Priority (Not Nice To Other Tasks) 													  |
+| II)    0 for Normal  Priority 							 												  |
+| III)  20 for Lowest  Priority (Nice To Other Tasks) 													  	  |																											  
+---------------------------------------------------------------------------------------------------------------
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+
+												  ####################################################
+												  #					  Using Both				     #
+												  ####################################################
+												  
+---------------------------------------------------------------
+| Using Both To Create A New Process and Modify It Process:   |
+---------------------------------------------------------------
+nice -n <nice_value> command
+ionice -c 2 -n 0 -p <PID>
+
+--------------------------------------------------------
+| Using Both To Create A Modify An Existing Process:   |
+--------------------------------------------------------
+renice -n -20 -p 
+ionice -c 2 -n 0 -p 
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+
+												 #####################################################
+												 #        Running A Process In The Background        #
+												 #####################################################
+																
+																|
+	------------------------------------------					|							------------------------------------------							
+	| Starting A New Screen:   				 |					|							| Kill a Screen Session:				 |
+	------------------------------------------					|							------------------------------------------
+																|							
+	screen -S <Session_Name>									|								exit	
+																|
+																|								screen -X -S <session_id> quit
+																|
+	------------------------------------------					|							------------------------------------------							
+	| List All Screens:   	    			 |					|							| :			 |
+	------------------------------------------					|							------------------------------------------
+																|
+	screen -ls													|								
+																|		
+	------------------------------------------					|							------------------------------------------
+	| Detach from a Screen Session:			 |					|							| :			 |						
+	------------------------------------------					|							------------------------------------------
+																|
+	screen -r <session_id>										|								
+																|
+	screen -r <session_name>									|								
+																|										
+																|
+	------------------------------------------					|							------------------------------------------
+	| Detach from a Screen Session:			 |					|							| :			 |						
+	------------------------------------------					|							------------------------------------------
+																|
+	Ctrl-a d													|								
+																|
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+=======================================================================================================================================================================
+|																Setting Up Bash Aliases																			  	  |
+=======================================================================================================================================================================	
+																
+	
+	------------------------------------------						
+	| Creating Shortcuts For 'root' User:  	 |
+	------------------------------------------
+	-----------
+	| Step 1: |
+	-----------
+	
+	cd
+	
+	-----------
+	| Step 2: |
+	-----------
+	
+	nano .bashrc
+	
+	-----------
+	| Step 3: |
+	-----------							###########################
+										#						  #										
+										# 	ADD    OR    MODIFY:  # 
+										#						  #
+										###########################
+					----------------------------------------------------------------------------
+					|																		   |
+					| 		alias m='mysql -u root -pAL\@12345'								   |
+					|																		   |
+					| 		alias mvar='mysql -u root -pAL\@12345 Variables'				   |
+					|																		   |
+					| 		alias largepipe='mysql -u root -pAL\@12345 FinalPipe'			   |
+					|																		   |					
+					| 		alias vars='cd /home/Alexis/FilesToCreateDatabase/9Variables'	   |
+					|																		   |
+					| 		alias a='cd /home/Alexis'										   |
+					|																		   |	
+					----------------------------------------------------------------------------
+					
+					
+     					##############################
+						#	    Bash Commands	     # 
+						#	   ---------------	     #				
+						#  	   Host: ralice.xyz      #
+						#							 # 
+						#  LAST UPDATED: 07/24/2024  #
+						##############################                     
+---------------------------------------------------------------------------
+																		  |
+alias m='mysql -u root -pAL\@12345'                                       |
+alias mvars='mysql -u root -pAL\@12345 Variables'                         |
+alias laylargepipe='mysql -u root -pAL\@12345 FinalPipe'                  |
+alias vars='cd /home/Alexis/FilesToCreateDatabase/9Variables'             |
+alias alexis='cd /home/Alexis'                                            |
+alias rserver='cd /home/rserver'                                          |
+																		  |
+---------------------------------------------------------------------------
+					
+	-----------
+	| Step 4: |
+	-----------
+	
+	ctrl-x 
+	
+	<wait for menu at the bottom of the screen>
+	
+	Y
+	
+	<Save file with filename (either rename or dont touch it i.e. let it be)>
+	
+	*Press ENTER
+	
+	-----------
+	| Step 5: |
+	-----------
+	
+	SOURCE/"UPDATE" THE BASH COMMANDS
+   ------------------------------------
+ 
+In Terminal copy paste by right clicking:
+--------------------------------------
+									 |
+	if [ -f /etc/bashrc ]; then		 |
+	. /etc/bashrc					 |
+	fi								 |			
+									 |	
+--------------------------------------
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+
+
+#2 pt r
+. X  X 
+. X  X 
+. .  X 
+. .  X 
+. .  X 
+. .  . 
+       
+#2apter
+																
+=======================================================================================================================================================================
+|																Automating A Bash Script																			  |
+=======================================================================================================================================================================	
+
+	------------------------------------------						
+	| Using A Batch Script:   				 |
+	------------------------------------------
+-------------------------------------------------------------
+|		Command				|			Example				|	
+|---------------------------|-------------------------------|
+|chmod +x <file_name>.sh	|	chmod +x manage_tasks.sh	|
+|---------------------------|-------------------------------|
+|./<file_name>.sh			|	./manage_tasks.sh			|
+----------------------------|--------------------------------
+
+This script can be used to:
+1) Login to MySQL with a. No DB selected OR b. Login to Variables DB
+2) Run a python3 script with a selected filepath
+3) Run an R script with a selected filepath
+
+##############################################___START__OF__BASH__SCRIPT___#################################################################################
+#!/bin/bash
+
+# Function to handle MySQL login
+mysql_login() {
+    echo "Choose database option:"
+    echo "1) No DB"
+    echo "2) Variables DB"
+    read -p "Enter choice [1-2]: " db_choice
+    
+    case $db_choice in
+        1)
+            echo "Logging into MySQL with no database..."
+            echo "Enter your custom PID or press Enter to use default:"
+            read custom_pid
+            if [ -z "$custom_pid" ]; then
+                mysql -u root -pAL\@12345
+            else
+                nice -n -20 mysql -u root -pAL\@12345 &
+                pid=$!
+                if [ -n "$custom_pid" ]; then
+                    ionice -c 2 -n 0 -p $custom_pid
+                else
+                    ionice -c 2 -n 0 -p $pid
+                fi
+            fi
+            ;;
+        2)
+            echo "Logging into MySQL with Variables DB..."
+            echo "Enter your custom PID or press Enter to use default:"
+            read custom_pid
+            if [ -z "$custom_pid" ]; then
+                mysql -u root -pAL\@12345 Variables
+            else
+                nice -n -20 mysql -u root -pAL\@12345 Variables &
+                pid=$!
+                if [ -n "$custom_pid" ]; then
+                    ionice -c 2 -n 0 -p $custom_pid
+                else
+                    ionice -c 2 -n 0 -p $pid
+                fi
+            fi
+            ;;
+        *)
+            echo "Invalid choice."
+            ;;
+    esac
+}
+
+# Function to run a Python script
+run_python_script() {
+    read -p "Enter the filepath of the Python script: " python_file
+    echo "Running Python script..."
+    echo "Enter your custom PID or press Enter to use default:"
+    read custom_pid
+    if [ -z "$custom_pid" ]; then
+        python3 "$python_file"
+    else
+        nice -n -20 python3 "$python_file" &
+        pid=$!
+        if [ -n "$custom_pid" ]; then
+            ionice -c 2 -n 0 -p $custom_pid
+        else
+            ionice -c 2 -n 0 -p $pid
+        fi
+    fi
+}
+
+# Function to run an R script
+run_r_script() {
+    read -p "Enter the filepath of the R script: " r_file
+    echo "Running R script..."
+    echo "Enter your custom PID or press Enter to use default:"
+    read custom_pid
+    if [ -z "$custom_pid" ]; then
+        Rscript "$r_file"
+    else
+        nice -n -20 Rscript "$r_file" &
+        pid=$!
+        if [ -n "$custom_pid" ]; then
+            ionice -c 2 -n 0 -p $custom_pid
+        else
+            ionice -c 2 -n 0 -p $pid
+        fi
+    fi
+}
+
+# Main menu
+echo "Choose an option:"
+echo "1) Login to MySQL"
+echo "2) Run a Python script"
+echo "3) Run an R script"
+read -p "Enter choice [1-3]: " choice
+
+case $choice in
+    1)
+        mysql_login
+        ;;
+    2)
+        run_python_script
+        ;;
+    3)
+        run_r_script
+        ;;
+    *)
+        echo "Invalid choice."
+        ;;
+esac
+##############################################___END__OF__BASH__SCRIPT___####################################################################
+
+```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+
+
+#3 pt r
+. X  X 
+. X  X 
+. .  X 
+. .  X 
+. .  X 
+. .  . 
+       
+#3apter
+
+=======================================================================================================================================================================
+|																Default Placeholder Text																			  |
+=======================================================================================================================================================================	
+
+--------------------------------------						
+| Switching Users:   				 |
+--------------------------------------
+
+su Alexis
+
+--------------------------------------						
+| Deleting non-empty Directories:   				 |
+--------------------------------------
+rm -rf /path/to/directory
+
+
+To run a process in a `screen` session named `Py1` and with `nice` priority in Linux, follow these steps:
+
+### 1. **Start a New `screen` Session**
+
+First, create and start a new `screen` session named `Py1`:
+
+```sh
+screen -S Py1
+```
+
+### 2. **Run the `nice` Command in the `screen` Session**
+
+Within the `screen` session, use the `nice` command to run your Python script with a high priority:
+
+```sh
+nice -n -20 python3 your_script.py
+```
+
+Replace `your_script.py` with the path to your Python script.
+
+### 3. **Detach from the `screen` Session**
+
+To detach from the `screen` session and leave it running in the background, press:
+
+```
+Ctrl + A
+```
+
+Then release both keys and press:
+
+```
+D
+```
+
+### 4. **Reattach to the `screen` Session**
+
+If you need to reattach to the `screen` session later, use:
+
+```sh
+screen -r Py1
+```
+
+### 5. **List and Manage `screen` Sessions**
+
+If you have multiple `screen` sessions and need to see a list of them:
+
+```sh
+screen -ls
+```
+
+To attach to a specific session from the list, use:
+
+```sh
+screen -r <session_id>
+```
+
+Replace `<session_id>` with the ID of the desired session.
+
+### Example of Full Process
+
+1. **Start the `screen` Session**:
+
+   ```sh
+   screen -S Py1
+   ```
+
+2. **Run the Command**:
+
+   ```sh
+   nice -n -20 python3 /path/to/your_script.py
+   ```
+
+3. **Detach**:
+
+   Press `Ctrl + A`, then `D`.
+
+4. **Reattach Later**:
+
+   ```sh
+   screen -r Py1
+   ```
+
+### Notes
+
+- **`nice` Command**: The `nice` command adjusts the priority of the process. `-n -20` sets the highest priority. Ensure you have the necessary permissions to set such high priority.
+  
+- **`screen` Command**: `screen` is a terminal multiplexer that allows you to start multiple sessions and detach/reattach as needed. Make sure `screen` is installed on your system. If not, you can typically install it using your package manager (e.g., `sudo apt-get install screen` on Debian-based systems).
+
+By following these steps, you can run and manage your Python script in a `screen` session with a specific priority.
+
+
+
