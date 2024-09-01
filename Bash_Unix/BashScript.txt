@@ -1,0 +1,136 @@
+ChatGPT Input:
+--------------
+How can I write a bash script that asks if I want to pick 1) Login to MySQL 2) Run A Python Script 3) Run an R script and when 1) is chosen options exist: 1) No DB 2) Variables DB. If 1) -> 1) is chosen this code runs '
+nice -n -20 mysql -u root -pAL\@12345 
+find PID or set custom PID 
+ionice -c 2 -n 0 -p <PID>
+' if 1) -> 2) is chosen this code runs:  '
+nice -n -20 mysql -u root -pAL\@12345 Variables
+find PID or set custom PID 
+ionice -c 2 -n 0 -p <PID>
+' If 2) is chosen this code runs: '
+Ask for filepath of python script
+nice -n -20 python3 'input the given filepath into script'
+find PID or set custom PID 
+ionice -c 2 -n 0 -p <PID>
+' If 3) is chosen this code runs: '
+Ask for filepath of python script
+nice -n -20 Rscript 'input the given filepath into script'
+find PID or set custom PID 
+ionice -c 2 -n 0 -p <PID>
+'
+########################################################################################################################################################################
+TO USE:
+
+chmod +x manage_tasks.sh
+./manage_tasks.sh
+
+########################################################################################################################################################################
+#!/bin/bash
+
+# Function to handle MySQL login
+mysql_login() {
+    echo "Choose database option:"
+    echo "1) No DB"
+    echo "2) Variables DB"
+    read -p "Enter choice [1-2]: " db_choice
+    
+    case $db_choice in
+        1)
+            echo "Logging into MySQL with no database..."
+            echo "Enter your custom PID or press Enter to use default:"
+            read custom_pid
+            if [ -z "$custom_pid" ]; then
+                mysql -u root -pAL\@12345
+            else
+                nice -n -20 mysql -u root -pAL\@12345 &
+                pid=$!
+                if [ -n "$custom_pid" ]; then
+                    ionice -c 2 -n 0 -p $custom_pid
+                else
+                    ionice -c 2 -n 0 -p $pid
+                fi
+            fi
+            ;;
+        2)
+            echo "Logging into MySQL with Variables DB..."
+            echo "Enter your custom PID or press Enter to use default:"
+            read custom_pid
+            if [ -z "$custom_pid" ]; then
+                mysql -u root -pAL\@12345 Variables
+            else
+                nice -n -20 mysql -u root -pAL\@12345 Variables &
+                pid=$!
+                if [ -n "$custom_pid" ]; then
+                    ionice -c 2 -n 0 -p $custom_pid
+                else
+                    ionice -c 2 -n 0 -p $pid
+                fi
+            fi
+            ;;
+        *)
+            echo "Invalid choice."
+            ;;
+    esac
+}
+
+# Function to run a Python script
+run_python_script() {
+    read -p "Enter the filepath of the Python script: " python_file
+    echo "Running Python script..."
+    echo "Enter your custom PID or press Enter to use default:"
+    read custom_pid
+    if [ -z "$custom_pid" ]; then
+        python3 "$python_file"
+    else
+        nice -n -20 python3 "$python_file" &
+        pid=$!
+        if [ -n "$custom_pid" ]; then
+            ionice -c 2 -n 0 -p $custom_pid
+        else
+            ionice -c 2 -n 0 -p $pid
+        fi
+    fi
+}
+
+# Function to run an R script
+run_r_script() {
+    read -p "Enter the filepath of the R script: " r_file
+    echo "Running R script..."
+    echo "Enter your custom PID or press Enter to use default:"
+    read custom_pid
+    if [ -z "$custom_pid" ]; then
+        Rscript "$r_file"
+    else
+        nice -n -20 Rscript "$r_file" &
+        pid=$!
+        if [ -n "$custom_pid" ]; then
+            ionice -c 2 -n 0 -p $custom_pid
+        else
+            ionice -c 2 -n 0 -p $pid
+        fi
+    fi
+}
+
+# Main menu
+echo "Choose an option:"
+echo "1) Login to MySQL"
+echo "2) Run a Python script"
+echo "3) Run an R script"
+read -p "Enter choice [1-3]: " choice
+
+case $choice in
+    1)
+        mysql_login
+        ;;
+    2)
+        run_python_script
+        ;;
+    3)
+        run_r_script
+        ;;
+    *)
+        echo "Invalid choice."
+        ;;
+esac
+
